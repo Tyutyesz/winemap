@@ -25,8 +25,18 @@ const Core = {
             };
         })
         console.log(regionList);
+        let selectedRegion = null;
+        let svg;
+        let allSvg = document.querySelectorAll('.w_country');
         const hoverOnCountry = (item) => {
-            console.log(item);
+            selectedRegion = `w_country_id_${item.getAttribute("data-country")}`;
+            svg = document.querySelectorAll(`.${selectedRegion}`);
+            allSvg.forEach((element) => {
+                element.style.fill = "#ffffff";
+            })
+            svg.forEach((element) => {
+                element.style.fill = "red";
+            })
         }
         $countryListItem.forEach((element) => {
             element.addEventListener('mouseover', () => {
